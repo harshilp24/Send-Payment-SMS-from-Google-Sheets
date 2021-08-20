@@ -51,10 +51,7 @@ function sendSmsToAll() {
   var sheet = SpreadsheetApp.getActiveSheet();
   var rows = sheet.getDataRange().getValues();
   
-  // The `shift` method removes the first row and saves it into `headers`.
   var headers = rows.shift();
-  
-  // Try to send an SMS to every row and save their status.
   rows.forEach(function(row) {
     row[STATUS] = sendSms(row[PHONE_NUMBER], row[MESSAGE], row[PAYMENT_DUE], row[PAYMENT_LINK], row[NAME],row[PAYMENT_INFO], row[LAST_DATE]);
   });
@@ -64,15 +61,6 @@ function sendSmsToAll() {
 }
 
 
-/**
- * Sends a message to a given phone number via SMS through Twilio.
- * To learn more about sending an SMS via Twilio and Sheets: 
- * https://www.twilio.com/blog/2016/02/send-sms-from-a-google-spreadsheet.html
- *
- * @param {number} phoneNumber - phone number to send SMS to.
- * @param {string} message - text to send via SMS.
- * @return {string} status of SMS sent (successful sent date or error encountered).
- */
 function sendSms(phoneNumber, message,paymentdue, paymentlink, name, info, lastdate) {
   var twilioUrl = 'https://api.twilio.com/2010-04-01/Accounts/' + TWILIO_ACCOUNT_SID + '/Messages.json';
 
