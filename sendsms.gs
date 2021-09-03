@@ -1,5 +1,5 @@
 // Spreadsheet column names mapped to 0-based index numbers.
-var TIME_ENTERED = 0;
+var TIME_ENTERED = 0; // You can replace this with payment status or extra remarks section. 
 var NAME = 1;
 var PHONE_NUMBER = 2;
 var MESSAGE = 3;
